@@ -1,7 +1,7 @@
 // ProductsList.jsx
 import NoodleCard from "./NoodleCard";
 
-const ProductsList = () => {
+const ProductsList = ({noodleList}) => {
   
   return (
     <div className="mt-16 container mx-auto">
@@ -15,16 +15,9 @@ const ProductsList = () => {
       </p>
       <div className="flex flex-wrap justify-center">
       
-          <NoodleCard />
-          <NoodleCard />
-          <NoodleCard />
-          <NoodleCard />
-          <NoodleCard />
-          <NoodleCard />
-          <NoodleCard />
-          <NoodleCard />
-          <NoodleCard />
-      
+      {noodleList.map((noodle) => (
+          <NoodleCard key={noodle._id} noodle={noodle} />
+        ))}
       </div>
     </div>
   );
