@@ -1,38 +1,36 @@
-import React from 'react'
-import Image from 'next/image'
+import React from 'react';
 import styles from "../../styles/Order.module.css";
 
 function Order() {
   return (
     <div className={styles.container}>
-        <div className={styles.left}>
-            <div className={styles.row}>
-            <table className={styles.table}>
-          <tr className={styles.trTitle}>
-            <th>Id</th>
-            <th>Customer</th>
-            <th>Table</th>
-            <th>Total</th>
-          </tr>
-          <tr className={styles.tr}>
-            <td>
-    
-              <span className={styles.id}>eiei</span>
-            </td>
-            <td>
-              <span className={styles.name}>123546</span>
-            </td>
-            <td>
-              <span className={styles.address}>John</span>
-            </td>
-            <td>
-              <span className={styles.total}>1</span>
-            </td>
-    
-            </tr>
-            
-        </table>
-            </div>
+      <div className={styles.left}>
+        <div className={styles.row}>
+          <table className={styles.table}>
+            <tbody>
+              <tr className={styles.trTitle}>
+                <th>Id</th>
+                <th>Customer</th>
+                <th>Table</th>
+                <th>Total</th>
+              </tr>
+              <tr className={styles.tr}>
+                <td>
+                  <span className={styles.id}>eiei</span>
+                </td>
+                <td>
+                  <span className={styles.name}>123546</span>
+                </td>
+                <td>
+                  <span className={styles.address}>John</span>
+                </td>
+                <td>
+                  <span className={styles.total}>1</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
             <div className={styles.row}>
                 <div className=''>
                 
@@ -89,5 +87,14 @@ function Order() {
     </div>
   )
 }
+
+// export const getServerSideProps = async ({ params }) => {
+//   const res = await axios.get(`http://localhost:3000/api/orders/${params.id}`);
+//   return {
+//     props: {
+//       order: res.data,
+//     },
+//   };
+// };
 
 export default Order

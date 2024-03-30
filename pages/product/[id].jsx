@@ -4,20 +4,18 @@ import Image from "next/image";
 import styles from "../../styles/Product.module.css"
 import axios from "axios";
 import { useState } from "react";
-const Product = ({noodle}) => {
-  const [size, setSize] = useState(0);
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../redux/cartSlice";
 
- 
-  // const noodles = {
-  //   id: "65dc72b08fdb6838cb397b7d",
-  //   img: "/3.jpg",
-  //   name: "เตี๋ยว",
-  //   price: [19.9, 23.9, 27.9],
-  //   desc: " หรอยแรงหรอยแรงหรอยแรงหรอย"
-  // };
+const Product = ({noodle}) => {
+  const [price,setPrice] = useState(noodle.prices[0])
+  const [size, setSize] = useState(0);
+  const [quantity,setQuantity] = useState(1);
+  const dispatch = useDispatch();
+  
 
   const handleClick = () => {
-    // Handle click
+    dispatch(addProduct({...noodle, price, quantity}))
   };
 
   return (
@@ -71,7 +69,7 @@ const Product = ({noodle}) => {
             defaultValue={1}
             className="w-20 px-2 py-1 border border-gray-300 rounded"
           />
-          <button className={styles.button} >
+          <button className={styles.button} onClick={handleClick}>
             Add to Cart
           </button>
         </div>
