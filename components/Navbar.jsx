@@ -12,7 +12,9 @@ const Navbar = () => {
           <Image src="/1.jpg" alt="" width={32} height={32} />
         </div>
         <div className={styles.texts}>
+          <Link href="/">
           <div className={styles.text}>Contact!</div>
+          </Link>
           <div className={styles.text}>012345678</div>
         </div>
       </div>
