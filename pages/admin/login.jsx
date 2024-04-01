@@ -3,9 +3,6 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-
-
-
 const Login = () => {
 
   const [username, setUsername] = useState(null);

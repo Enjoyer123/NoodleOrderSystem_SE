@@ -7,7 +7,11 @@ export default async function handler(req, res) {
     query: { id },
 } = req;
  
+<<<<<<< HEAD
    dbConnect();
+=======
+  await dbConnect();
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
   
    if (method === "GET") {
       try{

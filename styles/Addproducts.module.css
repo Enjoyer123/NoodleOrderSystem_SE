@@ -9,7 +9,11 @@
     text-align: center;
     cursor: pointer;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
   .container {
     width: 100vw;
     height: 100vh;
@@ -21,7 +25,11 @@
     align-items: center;
     justify-content: center;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
   .wrapper {
     width: 500px;
     background-color: white;
@@ -32,7 +40,11 @@
     justify-content: space-between;
     position: relative;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
   .close {
     width: 30px;
     height: 30px;
@@ -47,45 +59,77 @@
     top: -10px;
     right: -10px;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
   .item {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
   .label {
     margin-bottom: 5px;
     font-size: 14px;
     font-weight: 500;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
   .input {
     border: none;
     border-bottom: 1px solid gray;
     outline: none;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
   .priceContainer {
     display: flex;
     justify-content: space-between;
   }
+<<<<<<< HEAD
 
   .inputSm {
     width: 25%;
   }
 
+=======
+  
+  .inputSm {
+    width: 25%;
+  }
+  
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
   .extra {
     display: flex;
     justify-content: space-between;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
   .extraItems {
     margin: 10px 0px;
     display: flex;
     flex-wrap: wrap;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
   .extraItem {
     padding: 5px;
     font-size: 14px;
@@ -96,7 +140,11 @@
     border-radius: 10px;
     cursor: pointer;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
   .addButton {
     width: 25%;
     border: none;

@@ -28,4 +28,8 @@ const ReceiptSchema = new mongoose.Schema({
 
 const Receipt = mongoose.models.Receipt || mongoose.model('Receipt', ReceiptSchema);
 
+<<<<<<< HEAD
 export default Receipt;
+=======
+export default Receipt;
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828

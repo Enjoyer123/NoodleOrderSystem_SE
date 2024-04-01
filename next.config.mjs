@@ -12,9 +12,15 @@ const nextConfig = {
       child_process: false,
       tls: false,
     };
+<<<<<<< HEAD
 
     return config;
   },
 }
+=======
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
 
+    return config;
+  },
+}
 export default nextConfig;

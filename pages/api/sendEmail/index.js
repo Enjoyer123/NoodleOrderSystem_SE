@@ -17,7 +17,11 @@ export default async function handler(req, res) {
 
         const mailOptions = {
             from: 's6504062636381@email.kmutnb.ac.th',
+<<<<<<< HEAD
             to: 'anocha2447@gmail.com',
+=======
+            to: 's6504062616071@email.kmutnb.ac.th',
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
             subject: "Noodle Shop",
             html: `
                 <h3>Your Invoice</h3>
@@ -37,4 +41,8 @@ export default async function handler(req, res) {
         console.error("Failed to send email:", error);
         res.status(500).json({ message: "Failed to Send Email" });
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828

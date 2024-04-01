@@ -34,7 +34,12 @@ const Add = ({ setClose }) => {
         "https://api.cloudinary.com/v1_1/ddpkw3vyp/image/upload",
         data
       );
+<<<<<<< HEAD
 
+=======
+        //console.log("eiei",uploadRes.data)
+       
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
       const { url } = uploadRes.data;
       const newProduct = {
         title,
@@ -43,8 +48,13 @@ const Add = ({ setClose }) => {
         extraOptions,
         img: url,
       };
+<<<<<<< HEAD
       console.log(newProduct)
        const res = await axios.post("http://localhost:3000/api/products", newProduct);
+=======
+
+      await axios.post("http://localhost:3000/api/products", newProduct);
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
       setClose(true);
     } catch (err) {
       console.log(err);
@@ -57,7 +67,11 @@ const Add = ({ setClose }) => {
         <span onClick={() => setClose(true)} className={styles.close}>
           X
         </span>
+<<<<<<< HEAD
         <h1>Add a new Pizza</h1>
+=======
+        <h1>Add Products</h1>
+>>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
         <div className={styles.item}>
           <label className={styles.label}>Choose an image</label>
           <input type="file" onChange={(e) => setFile(e.target.files[0])} />
