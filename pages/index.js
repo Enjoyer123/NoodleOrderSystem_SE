@@ -4,8 +4,10 @@ import Head from "next/head";
 import ProductsList from "../components/ProductList"
 import axios from "axios";
 const inter = Inter({ subsets: ["latin"] });
-
+import { useState } from "react";
 export default function Home({noodleList}) {
+ 
+
   return (
     
         <div className="">
@@ -14,7 +16,8 @@ export default function Home({noodleList}) {
             <meta name="description" content="Best noodle shop in town" />
             <link rel="icon" href="/favicon.ico" />
           </Head>
-          <ProductsList noodleList = {noodleList} />
+          <ProductsList noodleList = {noodleList} />  
+       
         </div>
     
   );
