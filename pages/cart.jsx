@@ -20,15 +20,45 @@ function Cart() {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const createOrder = async (data) =>{
-    try{
-      const res = await axios.post("http://localhost:3000/api/orders",data);
-      res.status === 201 && router.push("/orders/"+res.data._id);
-      dispatch(reset());
-    }catch(err){
-      console.log(err) 
+  const createOrder = async (data) => {
+    try {
+      const orderRes = await axios.post("http://localhost:3000/api/orders", data);
+
+      const receiptRes = await axios.post("http://localhost:3000/api/receipts", {
+        orderId: orderRes.data._id,
+        customer: data.customer,
+        address: data.address,
+        total: data.total
+      });
+
+      if (orderRes.status === 201 && receiptRes.status === 201) {
+        // ส่งอีเมลหลังจากสร้าง order และ receipt สำเร็จ
+
+        console.log("eiei",receiptRes)
+
+        await sendMail(receiptRes.data);
+
+        // Redirect หรือทำการ dispatch อื่น ๆ ตามที่ต้องการ
+        router.push("/orders/" + orderRes.data._id);
+        dispatch(reset());
+      }
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
+  const sendMail = async (data) => {
+
+    try {
+      console.log("eiei2",data);
+      const response = await axios.post("http://localhost:3000/api/sendEmail", {
+        receiptData: data // ส่งข้อมูล receiptRes ไปยัง sendMail
+      });
+
+    } catch (error) {
+      console.log("หรอย2");
+      console.error("Error sending email:", error);
+    }
+  };
 
   // Custom component to wrap the PayPalButtons and handle currency changes
   const ButtonWrapper = ({ currency, showSpinner }) => {

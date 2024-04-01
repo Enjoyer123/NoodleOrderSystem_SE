@@ -1,5 +1,6 @@
 
-
+import AddButton from "../../components/AddButton";
+import AddProducts  from "../../components/AddProducts";
 import styles from "../../styles/Admin.module.css"
 import Image from "next/image"
 import axios from "axios"
@@ -7,6 +8,7 @@ import { useState } from "react";
 
 
 function Index({products,orders}) {
+    const [close, setClose] = useState(true);
     const [noodleList,setNoodleList] = useState(products);
     const [orderList,setOrderList] = useState(orders);
     const status = ["preparing", "on the way", "delivered"];
@@ -36,6 +38,8 @@ function Index({products,orders}) {
   return (
     <div className={styles.container}>
         <div className={styles.item}>
+        {<AddButton setClose={setClose} />}
+            {!close && <AddProducts setClose={setClose} />}
             <h1 className={styles.title}>Products</h1>
             <table className={styles.table}>
                 <tbody>
