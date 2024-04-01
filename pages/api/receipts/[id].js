@@ -18,11 +18,6 @@ const handler = async (req, res) => {
       res.status(500).json(err);
     }
   }
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
 };
 
 export default handler;

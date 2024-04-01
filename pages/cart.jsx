@@ -21,49 +21,45 @@ function Cart() {
   const dispatch = useDispatch();
   const router = useRouter();
 
-<<<<<<< HEAD
-  const createOrder = async (data) => {
-    try {
-      const orderRes = await axios.post("http://localhost:3000/api/orders", data);
+  // const createOrder = async (data) => {
+  //   try {
+  //     const orderRes = await axios.post("http://localhost:3000/api/orders", data);
 
-      const receiptRes = await axios.post("http://localhost:3000/api/receipts", {
-        orderId: orderRes.data._id,
-        customer: data.customer,
-        address: data.address,
-        total: data.total
-      });
+  //     const receiptRes = await axios.post("http://localhost:3000/api/receipts", {
+  //       orderId: orderRes.data._id,
+  //       customer: data.customer,
+  //       address: data.address,
+  //       total: data.total
+  //     });
 
-      if (orderRes.status === 201 && receiptRes.status === 201) {
-        // ส่งอีเมลหลังจากสร้าง order และ receipt สำเร็จ
+  //     if (orderRes.status === 201 && receiptRes.status === 201) {
+  //       // ส่งอีเมลหลังจากสร้าง order และ receipt สำเร็จ
 
-        console.log("eiei",receiptRes)
+  //       console.log("eiei",receiptRes)
 
-        await sendMail(receiptRes.data);
+  //       await sendMail(receiptRes.data);
 
-        // Redirect หรือทำการ dispatch อื่น ๆ ตามที่ต้องการ
-        router.push("/orders/" + orderRes.data._id);
-        dispatch(reset());
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const sendMail = async (data) => {
+  //       // Redirect หรือทำการ dispatch อื่น ๆ ตามที่ต้องการ
+  //       router.push("/orders/" + orderRes.data._id);
+  //       dispatch(reset());
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  // const sendMail = async (data) => {
 
-    try {
-      console.log("eiei2",data);
-      const response = await axios.post("http://localhost:3000/api/sendEmail", {
-        receiptData: data // ส่งข้อมูล receiptRes ไปยัง sendMail
-      });
+  //   try {
+  //     console.log("eiei2",data);
+  //     const response = await axios.post("http://localhost:3000/api/sendEmail", {
+  //       receiptData: data // ส่งข้อมูล receiptRes ไปยัง sendMail
+  //     });
 
-    } catch (error) {
-      console.log("หรอย2");
-      console.error("Error sending email:", error);
-    }
-  };
-=======
-  // ตัวอย่างการใช้งานส่งอีเมล
->>>>>>> 60e662a2bbd75084c299b7d2e5f27a46f7b2b828
+  //   } catch (error) {
+  //     console.log("หรอย2");
+  //     console.error("Error sending email:", error);
+  //   }
+  // };
 
   
 
