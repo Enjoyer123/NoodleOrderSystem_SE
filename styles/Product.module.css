@@ -1,120 +1,88 @@
 .container {
-    height: calc(100vh - 100px);
-    display: flex;
-    
-  }
+  height: calc(100vh - 100px);
+  display: flex;
+  margin: auto;
+
+}
+
+.left {
+  flex: 1.5;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right {
+  flex: 0.9;
+  margin: auto;
+
+}
+
+.imgContainer {
+  width: 80%;
+  height: 80%;
+  position: relative;
+}
+
+.title {
+  font-size: 72px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.price {
+  color: #FF006B;
+  font-size: 34px;
+  font-weight: bold;
+  border-bottom: 2px solid #FF006B;
+}
+
+.desc{
+  margin-top: 10px;
+}
+
+
+
+.button {
+  margin-top: 20px;
+  height: 45px;
+  width: 110px;
+  margin-left: 10px;
+  background-color: #FF006B;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 11px;
+}
+
+/* สำหรับหน้าจอที่มีความกว้างน้อยกว่าหรือเท่ากับ 768px */
+@media (max-width: 768px) {
   
-  .left {
-    flex: 2;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .right {
-    flex: 1;
-    margin:auto;
-   
-  }
-  
-  .imgContainer {
-    width: 80%;
-    height: 80%;
-    position: relative;
-  }
-  
-  .title{
-    font-size: 50px;
-    font-weight: 500;
+
+  .title {
+    font-size: 48px; /* ลดขนาดของตัวหนังสือในหน้าจอที่เล็กลง */
   }
 
   .price {
-    color: #d1411e;
-    font-size: 24px;
-    font-weight: 500;
-    border-bottom: 2px solid #d1411e;
-    
+    font-size: 24px; /* ลดขนาดของราคาในหน้าจอที่เล็กลง */
   }
 
-  .choose{
-    margin-top: 15px;
-    font-size: 20px;
-    font-weight: 700;
-  }
-  
-  .sizes {
-    width: 40%;
-    display: flex;
-    justify-content: space-between;
-    margin-top:6px;
-  }
-  
-  .size {
-    width: 30px;
-    height: 30px;
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .size:nth-child(2) {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .size:last-child {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .number {
-    position: absolute;
-    top: -5px;
-    right: -20px;
-    background-color: teal;
-    color: white;
-    font-size: 12px;
-    padding: 0 5px;
-    border-radius: 10px;
-  }
-  
-  .ingredients {
-    display: flex;
-    margin-bottom: 30px;
-  }
-  
-  .option {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-    font-size: 14px;
-    font-weight: 500;
-    
-    
+  .container {
+    flex-direction: column;
   }
 
-  
-  .checkbox {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
+  .left {
+    order: 0; 
   }
-  
-  .quantity {
-    width: 10px;
-    height: 30px;
+
+  .right {
+    order: 1; 
+    margin:0 50px 50px 50px;
+    text-align: center;
   }
-  
-  .button {
-    height: 35px;
-    width: 120px;
-    margin-left: 10px;
-    background-color: #d4255f;
-    color: white;
-    border: none;
-    font-weight: 500;
-    cursor: pointer;
-    border-radius: 50px;
-  }
-  
- 
+
+}
+
+

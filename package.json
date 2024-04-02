@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/kanit": "^5.0.19",
     "@paypal/react-paypal-js": "^8.2.0",
     "@reduxjs/toolkit": "^2.2.2",
     "@stripe/stripe-js": "^3.1.0",

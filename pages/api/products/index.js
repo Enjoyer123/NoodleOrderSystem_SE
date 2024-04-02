@@ -29,7 +29,7 @@
 // }
 
 import dbConnect from "../../../util/mongo.js";
-import Product from "../../../models/Product.js";
+import Product from "../../../models/Product";
 
 export default async function handler(req, res) {
   const { method } = req;

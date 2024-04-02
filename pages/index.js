@@ -1,13 +1,13 @@
 import Image from "next/image";
-import { Inter } from "next/font/google";
+
 import Head from "next/head";
 import ProductsList from "../components/ProductList"
 import axios from "axios";
-const inter = Inter({ subsets: ["latin"] });
-import { useState } from "react";
+
+import Featured from "../components/Featured";
+
 export default function Home({noodleList}) {
  
-
   return (
     
         <div className="">
@@ -16,6 +16,7 @@ export default function Home({noodleList}) {
             <meta name="description" content="Best noodle shop in town" />
             <link rel="icon" href="/favicon.ico" />
           </Head>
+          <Featured />
           <ProductsList noodleList = {noodleList} />  
        
         </div>

@@ -1,16 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
+import styles from "../styles/NoodleCard.module.css";
 
-const NoodleCard = ({noodle}) => {
+const NoodleCard = ({ noodle }) => {
   return (
-    <div className="w-1/5 pt-8 pr-8 flex flex-col items-center justify-center cursor-pointer">
-        <Link href={`/product/${noodle._id}`}>
-        <Image src= {noodle.img} alt="" width="500" height="500" />
-        </Link>
-    <h1 className="text-lg font-bold text-red-800">{noodle.title}</h1>
-      <span className="text-lg font-bold text-[#666]">{noodle.prices[0]}</span>
-      <p className="pt-2 text-center text-[#777]">{noodle.desc}</p>
-   </div>
+    <div className={styles.container}>
+  <Link href={`/product/${noodle._id}`}>
+    <div className={styles.image}>
+      <Image src={noodle.img} alt="" width={500} height={500} />
+    </div>
+    <div className={styles.bottom}>
+      
+      <div className={styles.left}>
+        <h1 className={styles.title}>{noodle.title}</h1>
+        <span className={styles.title}>${noodle.prices}</span>
+      </div>
+    </div>
+  </Link>
+</div>
+
   );
 };
 

@@ -1,4 +1,4 @@
-.container {
+/* .container {
     padding: 50px;
     display: flex;
     text-align: center;
@@ -58,5 +58,161 @@
     font-weight: bold;
     cursor: pointer;
     margin-top: 20px;
-  }
+  } */
   
+  
+  .container {
+    height: 100vh;
+  background-color: #ffdcea;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  margin: auto;
+}
+
+.cardItem {
+  background-color: #FF006B;
+  display: flex;
+  align-items: center; 
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 28px;
+  width: 600px;
+  height: 150px;
+  
+}
+
+.Image {
+  width: 45%;
+  height: auto;
+  object-fit: cover;
+  margin-right: 10px; /* เพิ่ม margin-right เพื่อชิดซ้าย */
+}
+
+.left {
+  margin: 10px;
+  align-items: center;
+  
+ 
+  display: flex;
+  flex-direction: row;
+  flex: 1.5;
+}
+
+.right {
+  flex: 0.6;
+}
+
+
+
+.name {
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  overflow: hidden;
+}
+
+.price {
+  margin-right: 10px;
+  color: #000000;
+  font-size: 16px;
+}
+
+.total {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.quantity {
+  margin: 0;
+}
+
+.right {
+  display: flex; 
+  align-items: center; 
+}
+
+.add {
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  
+}
+
+.sub {
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+
+}
+.buttonRe {
+  background-color: #ff0404;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+
+
+.quantity {
+  font-size: 16px; 
+  margin-left: 3px;
+  margin-right: 3px;
+
+ 
+}
+
+
+.tamail {
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  margin-right: 10px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.email {
+  height: 37px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+
+
+
+
+.totalTextTitle {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.button {
+  background-color: #FF006B;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

@@ -27,8 +27,8 @@ const handler = async (req, res) => {
       res.status(500).json(err);
     }
   }
-  if (method === "DELETE") {
-  }
+  
+  
 };
 
 export default handler;

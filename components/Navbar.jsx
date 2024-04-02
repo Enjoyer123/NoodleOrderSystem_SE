@@ -8,14 +8,13 @@ const Navbar = () => {
   return (
     <div className={styles.container}>
       <div className={styles.item}>
-        <div className={styles.callButton}>
-          <Image src="/1.jpg" alt="" width={32} height={32} />
+        <div >
+          <Image className={styles.logo} src="/img/logo.jpg" alt="" width={100} height={100}  />
         </div>
         <div className={styles.texts}>
           <Link href="/">
-          <div className={styles.text}>Contact!</div>
+          <div className={styles.text}>NoodleElegant</div>
           </Link>
-          <div className={styles.text}>012345678</div>
         </div>
       </div>
       
