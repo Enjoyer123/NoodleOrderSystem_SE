@@ -1,11 +1,9 @@
-import Image from "next/image";
+
 
 import Head from "next/head";
 import ProductsList from "../components/ProductList"
-import axios from "axios";
-
 import Featured from "../components/Featured";
-
+import axios from "axios";
 export default function Home({noodleList}) {
  
   return (
@@ -34,3 +32,21 @@ export const getServerSideProps = async () => {
     },
   };
 };
+
+// export const getServerSideProps = async () => {
+//   try {
+//     const noodleList = await NoodleApiProxyProducts.fetchNoodleData(); // เรียกใช้ fetchNoodleData จาก NoodleApiProxy
+//     return {
+//       props: {
+//         noodleList,
+//       },
+//     };
+//   } catch (error) {
+//     console.error("Error fetching noodle data:", error);
+//     return {
+//       props: {
+//         noodleList: [],
+//       },
+//     };
+//   }
+// };

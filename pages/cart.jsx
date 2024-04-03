@@ -248,6 +248,8 @@ import {
 import axios from "axios";
 import { useRouter } from "next/router";
 import { reset, removeProduct, adjustQuantity } from "../redux/cartSlice";
+import Link from "next/link";
+import Swal from 'sweetalert2';
 
 function Cart() {
   const [tableNumber, setTableNumber] = useState('');
@@ -261,16 +263,50 @@ function Cart() {
   const dispatch = useDispatch();
   const router = useRouter();
 
+  const isValidEmail = (email) => {
+    // Regular expression for email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+  
   const handleCheckout = () => {
-    if (!tableNumber || !email) {
-      alert("Please enter table number and email before checkout.");
+    if (!tableNumber && !email) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please enter table number and email before checkout.'
+      });
       return;
     }
-  
-
+    if (!tableNumber) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please select a table number.'
+      });
+      return;
+    }
+    if (!email) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please enter your email.'
+      });
+      return;
+    }
+    if (!isValidEmail(email)) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please enter a valid email address.'
+      });
+      return;
+    }
+    console.log("test",open)
     setOpen(true);
-    console.log(open);
+    console.log("test",open)
   };
+  
 
   const handleRemoveProduct = (productId) => {
     // หากต้องการลบสินค้าจากตะกร้า สามารถใช้ dispatch เพื่อส่ง action ไปยัง redux หรือส่งคำขอ API ไปยังเซิร์ฟเวอร์เพื่อลบสินค้า
@@ -284,14 +320,14 @@ function Cart() {
       const orderRes = await axios.post("http://localhost:3000/api/orders", data);
       const receiptRes = await axios.post("http://localhost:3000/api/receipts", {
         orderId: orderRes.data._id,
-        customer: data.customer,
-        address: data.address,
+        customer: data.emailcustomer,
+        address: data.table,
         total: data.total
       });
 
       if (orderRes.status === 201 && receiptRes.status === 201) {
         // ส่งอีเมลหลังจากสร้าง order และ receipt สำเร็จ
-        await sendMail(receiptRes.data);
+        sendMail(receiptRes.data);
 
         router.push("/orders/" + orderRes.data._id);
         dispatch(reset());
@@ -365,8 +401,8 @@ function Cart() {
             return actions.order.capture().then(function (details) {
               const shipping = details.purchase_units[0].shipping;
               createOrder({
-                customer: email,
-                address: tableNumber,
+                emailcustomer: email,
+                table: tableNumber,
                 total: cart.total,
                 method: 1,
 
@@ -380,12 +416,26 @@ function Cart() {
 
   return (
     <>
+    {cart.products.length === 0 ? (
+  
+  <div className={styles.container2}>
+    <div className={styles.newcard}>
+         
+      <h1>No products in the cart</h1>
+      <Link href="/">
+      <button className={styles.goorders}>Go orders</button>
+      </Link>
+   </div>
+
+</div>
+  
+) : (
       <div className={styles.container}>
-        <div className="satid">
+        <div className="setid">
           {cart.products.map((product) => (
             <div className={styles.cardItem} key={product._id}>
               <div className={styles.left}>
-                <img className={styles.Image} src={product.img} alt="" />
+                <img className={styles.Image} src={product.img1} alt="" />
                 <span className={styles.name}>{product.title}</span>
                 <span className={styles.price}>${product.prices}/1</span>
                 {/* <span className={styles.total}>฿{product.price * product.quantity}</span> */}
@@ -408,12 +458,14 @@ function Cart() {
   >
     +
   </button>
+  
   <button
     className={styles.buttonRe}
     onClick={() => handleRemoveProduct(product._id)}
   >
     Remove
   </button>
+  
 </div>
             </div>
           ))}
@@ -453,22 +505,26 @@ function Cart() {
           </div>
 
 
-        <button onClick={handleCheckout} className={styles.button}>CHECKOUT NOW</button>
-        {open &&
-  <PayPalScriptProvider
-    options={{
-      "client-id": "Actpj7W8pi5foaGko0k9zzEj2gy9qtxXzBocJcGmg4CTZnvwZl6dJq4rXDiLGyQyJYOmx7RbN3FGzLB2",
-      components: "buttons",
-      currency: "USD",
-      "disable-funding": "credit,card,p24",
-    }}
-  >
+       
+          <PayPalScriptProvider
+  options={{
+    "client-id": "Actpj7W8pi5foaGko0k9zzEj2gy9qtxXzBocJcGmg4CTZnvwZl6dJq4rXDiLGyQyJYOmx7RbN3FGzLB2",
+    components: "buttons",
+    currency: "USD",
+    "disable-funding": "credit,card,p24",
+  }}
+>
+  {open ? ( // เช็คว่าปุ่ม PayPal ถูกกดหรือไม่
     <ButtonWrapper currency={currency} showSpinner={false} />
-  </PayPalScriptProvider>
-}
+  ) : (
+    <button onClick={handleCheckout} className={styles.button}>CHECKOUT NOW</button>
+  )}
+</PayPalScriptProvider>
+
+
 
       </div>
-
+)}
     </>
 
   );

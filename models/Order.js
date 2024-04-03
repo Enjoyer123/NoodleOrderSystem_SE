@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 
 const OrderSchema = new mongoose.Schema(
   {
-    customer: {
+    emailcustomer: {
       type: String,
       required: true,
       maxlength: 60,
     },
-    address: {
+    table: {
       type: String,
       required: true,
       maxlength: 200,

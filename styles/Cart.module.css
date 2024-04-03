@@ -63,7 +63,7 @@
   
   .container {
     height: 100vh;
-  background-color: #ffdcea;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column; 
   align-items: center;
@@ -77,18 +77,17 @@
   display: flex;
   align-items: center; 
   margin-bottom: 20px;
-  border: 1px solid #ccc;
   border-radius: 28px;
   width: 600px;
   height: 150px;
-  
+  border: none;
 }
 
 .Image {
-  width: 45%;
+  width: 50%;
   height: auto;
   object-fit: cover;
-  margin-right: 10px; /* เพิ่ม margin-right เพื่อชิดซ้าย */
+  margin-right: 25px; /* เพิ่ม margin-right เพื่อชิดซ้าย */
 }
 
 .left {
@@ -118,6 +117,7 @@
   margin-right: 10px;
   color: #000000;
   font-size: 16px;
+  
 }
 
 .total {
@@ -127,6 +127,8 @@
 
 .quantity {
   margin: 0;
+  font-weight: bold;
+  color: #ffffff;
 }
 
 .right {
@@ -138,7 +140,7 @@
   background-color: #000000;
   color: white;
   border: none;
-  padding: 5px 10px;
+  padding: 4px 8px;
   font-size: 14px;
   cursor: pointer;
   border-radius: 5px;
@@ -149,22 +151,29 @@
   background-color: #000000;
   color: white;
   border: none;
-  padding: 5px 10px;
+  padding: 4px 8px;
   font-size: 14px;
   cursor: pointer;
   border-radius: 5px;
 
 }
-.buttonRe {
-  background-color: #ff0404;
-  color: white;
+
+
+.buttonRe{
   border: none;
-  padding: 5px 10px;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-left: 5px;
+
+  width: 70px;
+  height:30px;
+  background-color: white;
+  padding-left: 4px;
+  color: red;
+  margin-left: 45px;
+  font-weight: bold;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  
 }
+
 
 
 
@@ -215,4 +224,51 @@
   border-radius: 5px;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+
+.newcard {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  width: 600px;
+  height: 300px;
+  border: none;
+}
+
+.newcard h1,
+.newcard button {
+  margin: 10px;
+}
+
+.goorders {
+  margin-top: 20px;
+  height: 45px;
+  width: 110px;
+  margin-left: 10px;
+  background-color: #FF006B;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 11px;
+}
+
+.goorders:hover {
+  background-color: #000000;
+}
+
+.container2 {
+  height: 100vh;
+background-color: #FF006B;
+display: flex;
+flex-direction: column; 
+align-items: center;
+justify-content: center;
+padding: 40px;
+margin: auto;
 }

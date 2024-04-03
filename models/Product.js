@@ -1,3 +1,4 @@
+//factory เก็บข้อมูล schma
 import mongoose from "mongoose";
 
 const ProductSchema = new mongoose.Schema({
@@ -6,7 +7,7 @@ const ProductSchema = new mongoose.Schema({
         required: true,
         maxlength: 60
     },
-    img: {
+    img1: {
         type: String,
         required: true
     },

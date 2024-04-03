@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { addProduct } from "../../redux/cartSlice";
 
 const Product = ({ noodle }) => {
-  const [price, setPrice] = useState(noodle.prices[0])
+  const [price, setPrice] = useState(noodle.prices)
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
 
@@ -18,7 +18,7 @@ const Product = ({ noodle }) => {
     <div className={styles.container}>
       <div className={styles.left}>
         <div className={styles.imgContainer}>
-          <Image src={noodle.img2} objectFit="contain" layout="fill" alt="" />
+          <Image src={noodle.img2} layout="fill" alt="" />
         </div>
       </div>
       <div className={styles.right}>

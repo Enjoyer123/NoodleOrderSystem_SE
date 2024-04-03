@@ -1,21 +1,53 @@
 .container {
-    padding: 50px;
+  
+  height: 92.5vh;
+  display: flex;
+  justify-content: center; 
+  background-color: #FF006B;
+}
+ 
+  .card {
+    width: 50%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+   margin: auto;
+  }
+  
+  .cardContent {
+    padding: 20px;
+    
+  }
+
+  .label{
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .value{
+    font-size: 18px;
+    
+  }
+  
+  .cardItem {
+    margin-bottom: 10px;
+  }
+  
+  .label {
+    font-weight: bold;
+  }
+  
+  .value {
+    margin-left: 5px;
+  }
+  
+  
+  .row {
+    margin: 0 auto; 
+    width: 50%;
     display: flex;
-  }
-  
-  .left {
-    flex: 2;
-  }
-  
-  .table {
-    width: 100%;
-    text-align: left;
-    margin-bottom: 50px;
-  }
-  
-  .row:last-child {
-    width: 80%;
-    display: flex;
+    align-items: center;
     justify-content: space-between;
   }
   
@@ -53,35 +85,9 @@
     display: none;
   }
   
-  .right {
-    flex: 1;
-  }
   
-  .wrapper {
-    width: 90%;
-    max-height: 300px;
-    background-color: #333;
-    color: white;
-    padding: 20px 50px 50px 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
   
-  .totalTextTitle {
-    margin-right: 10px;
-  }
-  
-  .button {
-    background-color: white;
-    height: 30px;
-    color: teal;
-    font-weight: bold;
-    margin-top: 20px;
-    cursor: not-allowed;
-  }
-  
-  .title {
-    font-weight:bold;
-  }
-  
+  /* เพิ่มสไตล์สำหรับพื้นหลังของส่วนนี้เท่านั้น */
+.container .card {
+  background-color: #f8f9fa; /* สีพื้นหลังที่คุณต้องการ */
+}

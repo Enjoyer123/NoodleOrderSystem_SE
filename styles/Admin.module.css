@@ -1,27 +1,50 @@
 .container {
     padding: 50px;
     display: flex;
+    height: 92.5vh;
+    background-color: #FF006B;
+
   }
   
   .title {
     font-weight: bold;
-    font-size: 40px;
+    font-size: 30px;
+    display: flex;
+    justify-content: space-between;
+
   }
+
+  .title1 {
+    font-weight: bold;
+    font-size: 30px;
+    font-size: 30px;
+    display: flex;
+  justify-content: space-between;
+  }
+
+ 
   
   .item {
-    text-align: center;
+
     margin-left: 10px;
     flex: 1;
-    overflow-y: auto;
+    overflow-x: auto;
+    /* จัดเนื้อหาชิดซ้าย */
   }
   
   .table {
     width: 100%;
     border-collapse: collapse; 
+    border: 1px solid #ddd;
+    padding: 50px;
+    text-align: center;
+    justify-content: center; 
   }
   
   .trTitle {
-    background-color: #f2f2f2; 
+    background-color: #ffffff; 
+    border: 1px solid #ddd;
+    margin: 10px;
   }
   
   .th, .td {
@@ -30,19 +53,21 @@
   }
   
   .th {
+    
     background-color: #4CAF50; 
     color: white; 
-    text-align: left; 
+    
   }
   
   .tr:nth-child(even) {
+    
     background-color: #f2f2f2; 
   }
   
   
   .button {
     border: none;
-    color: white;
+    color: #ffffff;
     padding: 5px;
     cursor: pointer;
   }
@@ -56,3 +81,65 @@
     background-color: crimson;
   }
   
+  .text{
+    align-items: center;
+    justify-content: center;
+  }
+
+  .popupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* สีพื้นหลัง */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popupContent {
+ text-align: center;
+  background-color: #fff; /* สีพื้นหลังของ Popup */
+  padding: 50px;
+  border-radius: 10px;
+  z-index: 999; /* ให้ทับบนสุด */
+  width: 100vh; /* กำหนดความกว้างเป็น 80% ของขนาดของหน้าจอ */
+  height: 80vh; /* กำหนดความสูงเป็น 80% ของขนาดของหน้าจอ */
+  overflow: auto; /* เพิ่มการเลื่อนและแสดงแถบเลื่อนเมื่อเนื้อหามีขนาดเกินพื้นที่ที่กำหนด */
+}
+
+.buttonClose {
+    
+   
+    height: 50px;
+    width: 70px;
+    margin-bottom: 20px;
+    background-color: #FF006B;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 11px;
+    padding: 5px;
+   
+  
+}
+
+.buttonOpen {
+    
+
+  
+   height: 30px;
+   width: 100px;
+   margin-bottom: 10px;
+   background-color: #4CAF50;
+   color: white;
+   border: none;
+   font-weight: bold;
+   cursor: pointer;
+   border-radius: 11px;
+   padding: 5px;
+   font-size: 10px;
+ 
+}

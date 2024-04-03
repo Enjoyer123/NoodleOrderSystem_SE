@@ -7,7 +7,7 @@ const NoodleCard = ({ noodle }) => {
     <div className={styles.container}>
   <Link href={`/product/${noodle._id}`}>
     <div className={styles.image}>
-      <Image src={noodle.img} alt="" width={500} height={500} />
+      <Image src={noodle.img1} alt="" width={500} height={500} />
     </div>
     <div className={styles.bottom}>
       

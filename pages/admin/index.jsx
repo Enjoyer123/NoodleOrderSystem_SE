@@ -5,35 +5,34 @@ import Image from "next/image"
 import axios from "axios"
 import { useState } from "react";
 
+import Swal from 'sweetalert2';
+
 
 function Index({ products, orders }) {
-    const [close, setClose] = useState(true);
+    const [close, setClose] = useState(false);
     const [noodleList, setNoodleList] = useState(products);
     const [orderList, setOrderList] = useState(orders);
-    const status = ["preparing", "on the way", "delivered"];
+    const status = ["preparing", "on the way", "delivered","Finished"];
     
     
     const handleDelete = async (id) => {
         try {
-            
-            const res = await axios.delete("http://localhost:3000/api/products/" + id);
-            console.log("ei")
-            location.reload();
+            await axios.delete("http://localhost:3000/api/products/" + id);
+            setNoodleList(noodleList.filter(product => product._id !== id)); // ลบสินค้าออกจากรายการที่แสดง
+            Swal.fire('Success', 'Product has been deleted!', 'success');
         } catch (err) {
             console.log(err)
         }
     };
-
-
-
+    
     const handleHide = async (id) => {
-
-        // หากค่า title เป็น "0" ให้เปลี่ยนเป็น "1" และ ngượcกัน
+        // หากค่า hide เป็น "0" ให้เปลี่ยนเป็น "1" และ ngượcกัน
+        const currentProduct = noodleList.find(product => product._id === id);
         const newData = {
-            hide: noodleList.find(product => product._id === id).hide === "0" ? "1" : "0"
+            hide: currentProduct.hide === "0" ? "1" : "0"
             // อื่น ๆ ที่คุณต้องการอัปเดต
         };
-        
+    
         try {
             const updatedProduct = await axios.patch(
                 `http://localhost:3000/api/products/${id}`,
@@ -41,23 +40,31 @@ function Index({ products, orders }) {
             );
     
             console.log("Updated Product:", updatedProduct.data);
-            location.reload();
+            if (newData.hide === "0") {
+                Swal.fire('Success', 'Product has been hidden!', 'success');
+            } else {
+                Swal.fire('Success', 'Product has been displayed', 'success');
+            }
+         //location.reload();
         } catch (err) {
             console.error("Error updating product:", err);
         }
     };
     
+    
 
     const handleStatus = async (id) => {
         const item = orderList.find((order) => order._id === id);
         const currentStatus = item.status;
-
+    
         try {
             const res = await axios.put(`http://localhost:3000/api/orders/${id}`, { status: currentStatus + 1 });
-
+    
             if (status[currentStatus] === "") {
                 // ถ้าสถานะเป็น "delivered" ลบคำสั่งออกจาก orderList
                 setOrderList(orderList.filter((order) => order._id !== id));
+                // เพิ่มคำสั่งที่ลบนั้นใน deliveredOrders
+               
             } else {
                 // ถ้าสถานะไม่ใช่ "delivered" อัปเดตคำสั่งใน orderList
                 setOrderList([
@@ -65,10 +72,18 @@ function Index({ products, orders }) {
                     ...orderList.filter((order) => order._id !== id)
                 ]);
             }
+            Swal.fire('Success', 'Status has been changed!', 'success');
         } catch (err) {
             console.log(err);
         }
     };
+    
+
+    const handleClick = () => {
+        setClose(prevClose => !prevClose);
+    };
+    
+    
 
 
     return (
@@ -93,16 +108,15 @@ function Index({ products, orders }) {
                             <tr className={styles.trTitle}>
                                 <td>
                                     <Image
-                                        src={product.img}
+                                        src={product.img1}
                                         width={50}
                                         height={50}
-                                        objectFit="cover"
                                         alt=""
                                     />
                                 </td>
-                                <td>{product._id}...</td>
+                                <td>{product._id.slice(0, 8)}...</td>
                                 <td>{product.title}</td>
-                                <td>{product.prices[0]}</td>
+                                <td>{product.prices}</td>
                                 <td>{product.hide}</td>
                                 <td>
                                     <button className={styles.button} onClick={() => handleHide(product._id)}>Hide</button>
@@ -115,7 +129,10 @@ function Index({ products, orders }) {
             </div>
             {/* //////////////////////////// */}
             <div className={styles.item}>
-                <h1 className={styles.title}>Orders</h1>
+            <div className={styles.title1}>
+                Orders
+                <button className={styles.buttonOpen} onClick={handleClick}>Order Records</button>
+                </div>
                 <table className={styles.table}>
                     <tbody>
                         <tr className={styles.trTitle}>
@@ -124,29 +141,80 @@ function Index({ products, orders }) {
                             <th>Total</th>
                             <th>Payment</th>
                             <th>Status</th>
+                            <th>Time</th>
                             <th>Action</th>
 
                         </tr>
                     </tbody>
                     {orderList
-                        .filter((order) => status[order.status] !== "delivered") // กรองเฉพาะคำสั่งที่มีสถานะไม่ใช่ "delivered"
-                        .map((order) => (
-                            <tbody key={order._id}>
-                                <tr className={styles.trTitle}>
-                                    <td>{order._id.slice(0, 8)}...</td>
-                                    <td>{order.customer}</td>
-                                    <td>${order.total}</td>
-                                    <td>{order.method === 0 ? <span>cash</span> : <span>paid</span>}</td>
-                                    <td>{status[order.status]}</td>
-                                    <td>
-                                        <button className={styles.button} onClick={() => handleStatus(order._id)}>Next Stage</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        ))}
+            .filter((order) => status[order.status] !== "Finished") // กรองเฉพาะคำสั่งที่มีสถานะไม่ใช่ "delivered"
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // เรียงลำดับตามวันที่ถูกสร้าง
+            .map((order) => (
+                <tbody key={order._id}>
+                    <tr className={styles.trTitle}>
+                        <td>{order._id.slice(0, 8)}...</td>
+                        <td>{order.emailcustomer}</td>
+                        <td>${order.total}</td>
+                        <td>{order.method === 1 ? <span>paid</span> : <span>paid</span>}</td>
+                        <td>{status[order.status]}</td>
+                        <td>{new Date(order.createdAt).toLocaleString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })}</td>
+                        <td>
+                            <button className={styles.button} onClick={() => handleStatus(order._id)}>Next</button>
+                        </td>
+                    </tr>
+                </tbody>
+            ))}
                 </table>
+                
             </div>
 
+            {close && (
+    <div className={styles.popupOverlay}>
+
+        <div className={styles.popupContent}>
+
+            <div className={styles.title}>Orders
+            <button 
+            className={styles.buttonClose} 
+            onClick={handleClick}>x</button>
+
+            </div>
+
+            <table className={styles.table}>
+                <tbody>
+                    <tr className={styles.trTitle}>
+                        <th>Id</th>
+                        <th>Customer</th>
+                        <th>Total</th>
+                        <th>Payment</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        
+                    </tr>
+                </tbody>
+                
+                {orderList
+                    .filter((order) => status[order.status] === "Finished") // กรองเฉพาะคำสั่งที่มีสถานะ "delivered"
+                    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // เรียงลำดับตามวันที่ถูกสร้าง
+                    .map((order) => (
+                        <tbody key={order._id}>
+                            <tr className={styles.trTitle}>
+                                <td>{order._id.slice(0, 8)}...</td>
+                                <td className={styles.text}>{order.emailcustomer}</td>
+                                <td>${order.total}</td>
+                                <td>{order.method === 0 ? <span>cash</span> : <span>paid</span>}</td>
+                                <td>{new Date(order.createdAt).toLocaleString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })}</td>
+                                <td>{status[order.status]}</td>
+                            </tr>
+                        </tbody>
+                    ))}
+                
+            </table>
+        </div>
+        
+    </div>
+)}
+                   
 
         </div>
     )
@@ -174,4 +242,6 @@ export const getServerSideProps = async (ctx) => {
         }
     }
 }
+
+
 export default Index;
