@@ -5,7 +5,8 @@ import axios from "axios";
 const Order = ({ order }) => {
   const status = order.status;
 
-
+  
+  
 
   const statusClass = (index) => {
     if (index - status < 1) return styles.done;
@@ -23,11 +24,11 @@ const Order = ({ order }) => {
             </div>
             <div className={styles.cardItem}>
               <span className={styles.label}>Customer:</span>
-              <span className={styles.value}>{order.customer}</span>
+              <span className={styles.value}>{order.emailcustomer}</span>
             </div>
             <div className={styles.cardItem}>
               <span className={styles.label}>Table:</span>
-              <span className={styles.value}>{order.address}</span>
+              <span className={styles.value}>{order.table}</span>
             </div>
             <div className={styles.cardItem}>
               <span className={styles.label}>Total:</span>
@@ -35,7 +36,7 @@ const Order = ({ order }) => {
             </div>
             <div className={styles.cardItem}>
               <span className={styles.label}>Time:</span>
-              <span className={styles.value}>{new Date(order.createdAt).toLocaleString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })}</span>
+              <span className={styles.value}>{order.createdAt}</span>
 
 
             </div>

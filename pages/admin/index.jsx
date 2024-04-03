@@ -1,24 +1,19 @@
-
-
 import styles from "../../styles/Admin.module.css"
 import Image from "next/image"
 import axios from "axios"
 import { useState } from "react";
-
 import Swal from 'sweetalert2';
 
-
-function Index({ products, orders }) {
+const Index =({ products, orders })=> {
     const [close, setClose] = useState(false);
     const [noodleList, setNoodleList] = useState(products);
     const [orderList, setOrderList] = useState(orders);
     const status = ["preparing", "on the way", "delivered","Finished"];
-    
-    
+
     const handleDelete = async (id) => {
         try {
             await axios.delete("http://localhost:3000/api/products/" + id);
-            setNoodleList(noodleList.filter(product => product._id !== id)); // ลบสินค้าออกจากรายการที่แสดง
+            setNoodleList(noodleList.filter(product => product._id !== id)); 
             Swal.fire('Success', 'Product has been deleted!', 'success');
         } catch (err) {
             console.log(err)
@@ -26,11 +21,9 @@ function Index({ products, orders }) {
     };
     
     const handleHide = async (id) => {
-        // หากค่า hide เป็น "0" ให้เปลี่ยนเป็น "1" และ ngượcกัน
         const currentProduct = noodleList.find(product => product._id === id);
         const newData = {
             hide: currentProduct.hide === "0" ? "1" : "0"
-            // อื่น ๆ ที่คุณต้องการอัปเดต
         };
     
         try {
@@ -43,9 +36,9 @@ function Index({ products, orders }) {
             if (newData.hide === "0") {
                 Swal.fire('Success', 'Product has been hidden!', 'success');
             } else {
-                Swal.fire('Success', 'Product has been displayed', 'success');
+                Swal.fire('Success', 'Product has been displayed!', 'success');
             }
-         //location.reload();
+         location.reload();
         } catch (err) {
             console.error("Error updating product:", err);
         }
@@ -61,12 +54,9 @@ function Index({ products, orders }) {
             const res = await axios.put(`http://localhost:3000/api/orders/${id}`, { status: currentStatus + 1 });
     
             if (status[currentStatus] === "") {
-                // ถ้าสถานะเป็น "delivered" ลบคำสั่งออกจาก orderList
                 setOrderList(orderList.filter((order) => order._id !== id));
-                // เพิ่มคำสั่งที่ลบนั้นใน deliveredOrders
                
             } else {
-                // ถ้าสถานะไม่ใช่ "delivered" อัปเดตคำสั่งใน orderList
                 setOrderList([
                     res.data,
                     ...orderList.filter((order) => order._id !== id)
@@ -127,7 +117,8 @@ function Index({ products, orders }) {
                     ))}
                 </table>
             </div>
-            {/* //////////////////////////// */}
+
+
             <div className={styles.item}>
             <div className={styles.title1}>
                 Orders
@@ -157,7 +148,7 @@ function Index({ products, orders }) {
                         <td>${order.total}</td>
                         <td>{order.method === 1 ? <span>paid</span> : <span>paid</span>}</td>
                         <td>{status[order.status]}</td>
-                        <td>{new Date(order.createdAt).toLocaleString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })}</td>
+                        <td>{order.createdAt}</td>
                         <td>
                             <button className={styles.button} onClick={() => handleStatus(order._id)}>Next</button>
                         </td>
@@ -203,7 +194,7 @@ function Index({ products, orders }) {
                                 <td className={styles.text}>{order.emailcustomer}</td>
                                 <td>${order.total}</td>
                                 <td>{order.method === 0 ? <span>cash</span> : <span>paid</span>}</td>
-                                <td>{new Date(order.createdAt).toLocaleString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })}</td>
+                                <td>{order.createdAt}</td>
                                 <td>{status[order.status]}</td>
                             </tr>
                         </tbody>
@@ -234,7 +225,6 @@ export const getServerSideProps = async (ctx) => {
     }
     const productRes = await axios.get("http://localhost:3000/api/products");
     const orderRes = await axios.get("http://localhost:3000/api/orders");
-    // console.log("eiei",productRes)
     return {
         props: {
             orders: orderRes.data,

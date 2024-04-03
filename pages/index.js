@@ -16,7 +16,7 @@ export default function Home({noodleList}) {
           </Head>
           <Featured />
           <ProductsList noodleList = {noodleList} />  
-       
+        
         </div>
     
   );
