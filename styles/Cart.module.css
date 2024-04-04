@@ -239,6 +239,10 @@
   height: 300px;
   border: none;
 }
+.newcard h1{
+  font-size: 24px;
+  font-weight: bold;
+}
 
 .newcard h1,
 .newcard button {

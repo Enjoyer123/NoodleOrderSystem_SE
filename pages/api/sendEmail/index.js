@@ -1,9 +1,13 @@
 import nodemailer from 'nodemailer';
 
+// ฟังก์ชัน handler สำหรับการจัดการคำขอ
 export default async function handler(req, res) {
     try {
+        // รับข้อมูล receiptData จากตัว body ของคำขอ
         const { receiptData } = await req.body;
         console.log("eiei4",receiptData.orderId)
+        
+        // สร้าง transporter เพื่อสร้างการเชื่อมต่อกับผู้ให้บริการอีเมล
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -12,22 +16,7 @@ export default async function handler(req, res) {
             }
         });
 
-
-
-        // const mailOptions = {
-        //     from: 's6504062636381@email.kmutnb.ac.th',
-        //     to: `${receiptData.customer}`,
-        //     subject: "Noodle Shop",
-        //     html: `
-        //         <h3>Your Invoice test</h3>
-        //         <li> Receipt_id: ${receiptData._id}</li> 
-        //         <li> Order_id: ${receiptData.orderId}</li>
-        //         <li> Customer: ${receiptData.customer}</li>
-        //         <li> Address: ${receiptData.address}</li> 
-        //         <li> createdAt: ${formattedCreatedAt}</li> 
-        //         <li> Total: ${receiptData.total}</li>  
-        //     `
-        // };
+        // กำหนดข้อมูลเกี่ยวกับอีเมลที่จะส่ง
         const mailOptions = {
           from: 's6504062636381@email.kmutnb.ac.th',
           to: `${receiptData.customer}`,
@@ -47,14 +36,13 @@ export default async function handler(req, res) {
           `
       };
       
-      
-          
-          
-
+        // ส่งอีเมล
         await transporter.sendMail(mailOptions);
 
+        // ส่งข้อความกลับในรูปแบบ JSON พร้อมรหัสสถานะ 200 เมื่อส่งอีเมลสำเร็จ
         res.status(200).json({ message: "Email Sent Successfully" });
     } catch (error) {
+        // ส่งข้อความกลับในรูปแบบ JSON พร้อมรหัสสถานะ 500 เมื่อเกิดข้อผิดพลาดในการส่งอีเมล
         console.error("Failed to send email:", error);
         res.status(500).json({ message: "Failed to Send Email" });
     }
