@@ -1,40 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js & MongoDB Project
 
-## Getting Started
+This is a project built with **Next.js** and **MongoDB**. It includes various features such as an order system for noodles, a shopping cart, an admin dashboard, and more. Below is a description of the project along with screenshots to demonstrate key features.
 
-First, run the development server:
+## Features
+- **Homepage**: Displays the main page of the noodle shop.
+- **Order System**: Allows users to place noodle orders.
+- **Shopping Cart**: A cart where users can review their order.
+- **Order Status**: View the current status of your orders.
+- **Admin Dashboard**: Admin can log in and manage orders and menu items.
+- **Order Records**: Admin can view all the order records.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Screenshots
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 1. Homepage
+This is the main page of the noodle shop where users can browse and place orders.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+![Homepage](./images/1.PNG)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### 2. Noodle Order
+This page shows the process of ordering noodles. Users can select items and proceed to checkout.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+![Order Noodles](./images/2.PNG)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 3. Shopping Cart
+The shopping cart displays the items that the user has added. Users can modify the cart before checking out.
 
-## Learn More
+![Shopping Cart](./images/3.PNG)
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Order Status
+Users can view the current status of their order, such as "Processing," "Shipped," or "Delivered."
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![Order Status](./images/4.PNG)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 5. Admin Login
+The admin login page allows administrators to access the admin dashboard.
 
-## Deploy on Vercel
+![Admin Login](./images/5a.PNG)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 6. Admin Dashboard
+The admin dashboard displays the menu and the current order status. Admins can manage orders and update the menu.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![Admin Dashboard](./images/6a.PNG)
+
+### 7. Order Record
+The order record page shows all the orders placed by users, including their status and details.
+
+![Order Record](./images/7a.PNG)
