@@ -31,7 +31,7 @@ The shopping cart displays the items that the user has added. Users can modify t
 ![Shopping Cart](./ui_project/3.PNG)
 
 ### 4. Order Status
-Users can view the current status of their order, such as "Processing," "Shipped," or "Delivered."
+Users can view the current status of their order
 
 ![Order Status](./ui_project/4.PNG)
 
