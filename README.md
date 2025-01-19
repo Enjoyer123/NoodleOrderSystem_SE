@@ -2,6 +2,9 @@
 
 This is a project built with **Next.js** and **MongoDB**. It includes various features such as an order system for noodles, a shopping cart, an admin dashboard, and more. Below is a description of the project along with screenshots to demonstrate key features.
 
+**Course:** SOFTWARE ENGINEERING	 
+**Year:** 2024
+
 ## Features
 - **Homepage**: Displays the main page of the noodle shop.
 - **Order System**: Allows users to place noodle orders.
